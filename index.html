@@ -1,287 +1,254 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inclusão em Foco - Registro de Desenvolvimento</title>
+    <title>Inclusão 2026 - Mapeamento de Alunos</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Bibliotecas para PDF e E-mail -->
+    <!-- Bibliotecas Essenciais -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .bg-inclusion { background-color: #f0f9ff; }
-        .accent-color { background-color: #0284c7; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .gradient-bg { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
     </style>
 </head>
-<body class="bg-inclusion min-h-screen">
+<body class="gradient-bg min-h-screen">
 
-    <!-- Navegação -->
-    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <div class="max-width-6xl mx-auto flex justify-between items-center px-4">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-sky-600 rounded-full flex items-center justify-center text-white font-bold text-xl">I</div>
-                <h1 class="text-xl font-bold text-sky-900">Inclusão<span class="text-sky-600">Conectada</span></h1>
+    <!-- Header / Nav -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-sky-100 p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-sky-600 rounded-2xl flex items-center justify-center text-white shadow-lg rotate-3">
+                    <span class="font-bold text-xl">26</span>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-sky-950 leading-none">Mapeamento <span class="text-sky-600">Inclusivo</span></h1>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Ano Letivo 2026</span>
+                </div>
             </div>
-            <div class="hidden md:flex gap-6 text-sky-800 font-medium">
-                <a href="#" class="hover:text-sky-600">Início</a>
-                <a href="#formulario" class="hover:text-sky-600">Formulário</a>
-                <a href="#" class="hover:text-sky-600">Recursos</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#formulario" class="text-sky-800 font-semibold hover:text-sky-600 transition">Novo Registro</a>
+                <div class="h-6 w-px bg-slate-200"></div>
+                <span class="text-slate-500 text-sm italic">Destino: raphaelferro1990@gmail.com</span>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="bg-white py-12 px-6 border-b border-sky-100">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-sky-950 mb-4">Acompanhamento de Desenvolvimento</h2>
-            <p class="text-lg text-slate-600">Este espaço é dedicado ao registro cuidadoso da evolução de nossos alunos, garantindo uma educação verdadeiramente inclusiva e personalizada.</p>
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <div class="mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-sky-950 mb-4">Relatório de Desenvolvimento do Aluno</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">Preencha o formulário abaixo para mapear as necessidades e competências do aluno para o próximo ciclo escolar. O sistema gerará um PDF automático para o seu e-mail.</p>
         </div>
-    </header>
 
-    <!-- Formulário -->
-    <main class="max-w-4xl mx-auto p-6 my-8">
-        <div id="formulario" class="bg-white rounded-2xl shadow-xl p-8 border border-sky-50">
-            <form id="studentForm" class="space-y-8">
+        <div id="formulario" class="glass-card rounded-[2.5rem] shadow-2xl shadow-sky-200/50 p-8 md:p-12 border border-white">
+            <form id="mapeamentoForm" class="space-y-12">
                 
-                <!-- Dados do Aluno -->
+                <!-- Secção 1: Identificação -->
                 <section>
-                    <h3 class="text-xl font-semibold text-sky-800 border-b-2 border-sky-100 pb-2 mb-6 flex items-center gap-2">
-                        <span>👤</span> Dados do Aluno
-                    </h3>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-full flex items-center justify-center font-bold">01</div>
+                        <h3 class="text-xl font-bold text-sky-900">Identificação e Contexto</h3>
+                    </div>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Nome Completo</label>
-                            <input type="text" id="nome_aluno" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Nome Completo do Aluno</label>
+                            <input type="text" id="aluno_nome" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-sky-100 focus:border-sky-500 outline-none transition">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Data de Nascimento</label>
-                            <input type="date" id="data_nascimento" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Data de Nascimento</label>
+                            <input type="date" id="aluno_nasc" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-sky-100 focus:border-sky-500 outline-none transition">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Turma/Ano</label>
-                            <input type="text" id="turma" required placeholder="Ex: 3º Ano A" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Turma Prevista (2026)</label>
+                            <input type="text" id="aluno_turma" required placeholder="Ex: 5º Ano B" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-sky-100 focus:border-sky-500 outline-none transition">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Professor Responsável</label>
-                            <input type="text" id="professor" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Diagnóstico / Condição (Se houver)</label>
+                            <input type="text" id="aluno_diag" placeholder="Ex: TEA, TDAH, Deficiência Visual..." class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-sky-100 focus:border-sky-500 outline-none transition">
                         </div>
                     </div>
                 </section>
 
-                <!-- Avaliação Pedagógica -->
+                <!-- Secção 2: Desenvolvimento -->
                 <section>
-                    <h3 class="text-xl font-semibold text-sky-800 border-b-2 border-sky-100 pb-2 mb-6 flex items-center gap-2">
-                        <span>📚</span> Avaliação de Desenvolvimento
-                    </h3>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-full flex items-center justify-center font-bold">02</div>
+                        <h3 class="text-xl font-bold text-sky-900">Análise Pedagógica e Social</h3>
+                    </div>
+
                     <div class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Desenvolvimento Cognitivo</label>
-                            <textarea id="dev_cognitivo" rows="3" placeholder="Descreva o raciocínio, atenção e memória..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition"></textarea>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Perfil de Aprendizagem (Cognitivo)</label>
+                            <textarea id="perfil_cog" rows="4" placeholder="Como o aluno aprende melhor? Quais as suas maiores facilidades?" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-sky-100 outline-none transition"></textarea>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Interação Social e Afetividade</label>
-                            <textarea id="interacao_social" rows="3" placeholder="Como o aluno se relaciona com pares e adultos?" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition"></textarea>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Interação Social e Autonomia</label>
+                            <textarea id="perfil_soc" rows="4" placeholder="Relacionamento com pares, professores e nível de independência..." class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-sky-100 outline-none transition"></textarea>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Comunicação e Linguagem</label>
-                            <textarea id="comunicacao" rows="3" placeholder="Expressão verbal, não-verbal e compreensão..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Observações Adicionais / Necessidades de Apoio</label>
-                            <textarea id="observacoes" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition"></textarea>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Adaptações e Recursos Necessários para 2026</label>
+                            <textarea id="perfil_adap" rows="4" placeholder="Materiais adaptados, tempo extra, apoio de ledor, etc." class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-sky-100 outline-none transition"></textarea>
                         </div>
                     </div>
                 </section>
 
                 <!-- Ações -->
-                <div class="flex flex-col md:flex-row gap-4 pt-4">
-                    <button type="submit" id="btnSubmit" class="flex-1 bg-sky-600 hover:bg-sky-700 text-white font-bold py-4 px-6 rounded-xl transition transform active:scale-95 flex items-center justify-center gap-2">
-                        <span id="btnText">Enviar Relatório por E-mail</span>
-                        <div id="loader" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div class="flex flex-col md:flex-row gap-4 pt-6">
+                    <button type="submit" id="btnEnviar" class="flex-[2] bg-sky-600 hover:bg-sky-700 text-white font-bold py-5 px-8 rounded-3xl shadow-xl shadow-sky-200 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3">
+                        <span id="btnLabel">Enviar para Raphael Ferro</span>
+                        <div id="spinner" class="hidden w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                     </button>
-                    <button type="button" onclick="downloadManualPDF()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2">
-                        ⬇️ Baixar Cópia PDF
+                    <button type="button" onclick="baixarPDFManual()" class="flex-1 bg-white border-2 border-slate-200 hover:border-sky-600 hover:text-sky-600 text-slate-600 font-bold py-5 px-8 rounded-3xl transition-all flex items-center justify-center gap-2">
+                        Baixar Cópia PDF
                     </button>
                 </div>
             </form>
         </div>
     </main>
 
-    <!-- Modal de Feedback -->
-    <div id="feedbackModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[100] p-4">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-8 text-center shadow-2xl">
-            <div id="modalIcon" class="text-5xl mb-4"></div>
-            <h4 id="modalTitle" class="text-xl font-bold mb-2"></h4>
-            <p id="modalMessage" class="text-slate-600 mb-6"></p>
-            <button onclick="closeModal()" class="w-full bg-sky-600 text-white font-bold py-3 rounded-lg hover:bg-sky-700 transition">Entendido</button>
+    <!-- Modal Feedback -->
+    <div id="modalFeedback" class="fixed inset-0 bg-sky-950/60 backdrop-blur-sm hidden items-center justify-center z-[100] p-4">
+        <div class="bg-white rounded-[2.5rem] max-w-md w-full p-10 text-center shadow-3xl transform transition-all">
+            <div id="fbIcon" class="text-7xl mb-6"></div>
+            <h4 id="fbTitle" class="text-2xl font-extrabold text-sky-950 mb-2"></h4>
+            <p id="fbText" class="text-slate-600 mb-8"></p>
+            <button onclick="fecharModal()" class="w-full bg-sky-900 text-white font-bold py-4 rounded-2xl hover:bg-black transition shadow-lg">Entendido</button>
         </div>
     </div>
 
-    <footer class="text-center py-8 text-slate-500 text-sm">
-        <p>&copy; 2024 Portal de Inclusão Escolar. Todos os direitos reservados.</p>
+    <footer class="text-center py-12 text-slate-400 text-sm">
+        <p>Portal de Mapeamento Pedagógico &copy; 2026</p>
     </footer>
 
     <script>
-        // Configuração Inicial do EmailJS
-        // Para que o envio funcione REALMENTE, você deve criar uma conta em emailjs.com
-        // e substituir o "USER_ID_AQUI" pela sua chave pública.
+        // --- CONFIGURAÇÃO OBRIGATÓRIA (COLE AQUI OS SEUS DADOS) ---
+        const EJS_PUBLIC_KEY = "SUA_PUBLIC_KEY";  // Ex: "user_xxx"
+        const EJS_SERVICE_ID = "SEU_SERVICE_ID";  // Ex: "service_xxx"
+        const EJS_TEMPLATE_ID = "SEU_TEMPLATE_ID"; // Ex: "template_xxx"
+
         (function() {
-            emailjs.init("USER_ID_AQUI"); 
+            if (EJS_PUBLIC_KEY !== "SUA_PUBLIC_KEY") {
+                emailjs.init(EJS_PUBLIC_KEY);
+            }
         })();
 
-        const form = document.getElementById('studentForm');
-        const btnSubmit = document.getElementById('btnSubmit');
-        const btnText = document.getElementById('btnText');
-        const loader = document.getElementById('loader');
-        const feedbackModal = document.getElementById('feedbackModal');
+        const form = document.getElementById('mapeamentoForm');
+        const btnSubmit = document.getElementById('btnEnviar');
+        const modal = document.getElementById('modalFeedback');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Iniciar estado de carregamento
+
+            if (EJS_PUBLIC_KEY === "SUA_PUBLIC_KEY") {
+                mostrarAviso('⚠️', 'Configuração Necessária', 'Por favor, insira as chaves do seu EmailJS no código HTML para ativar o envio.');
+                return;
+            }
+
             setLoading(true);
 
+            const dados = {
+                nome: document.getElementById('aluno_nome').value,
+                nasc: document.getElementById('aluno_nasc').value,
+                turma: document.getElementById('aluno_turma').value,
+                diag: document.getElementById('aluno_diag').value || "Não informado",
+                cognitivo: document.getElementById('perfil_cog').value,
+                social: document.getElementById('perfil_soc').value,
+                adaptacao: document.getElementById('perfil_adap').value
+            };
+
             try {
-                const formData = {
-                    nome: document.getElementById('nome_aluno').value,
-                    data: document.getElementById('data_nascimento').value,
-                    turma: document.getElementById('turma').value,
-                    professor: document.getElementById('professor').value,
-                    cognitivo: document.getElementById('dev_cognitivo').value,
-                    social: document.getElementById('interacao_social').value,
-                    comunicacao: document.getElementById('comunicacao').value,
-                    obs: document.getElementById('observacoes').value
+                // 1. Gerar o PDF
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                // Design do PDF
+                doc.setFillColor(2, 132, 199);
+                doc.rect(0, 0, 210, 40, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(22);
+                doc.text("MAPEAMENTO INCLUSIVO 2026", 20, 25);
+                
+                doc.autoTable({
+                    startY: 45,
+                    head: [['Campo', 'Informação']],
+                    body: [
+                        ["Estudante", dados.nome],
+                        ["Nascimento", dados.nasc],
+                        ["Turma 2026", dados.turma],
+                        ["Diagnóstico", dados.diag],
+                        ["Perfil Cognitivo", dados.cognitivo],
+                        ["Social/Autonomia", dados.social],
+                        ["Adaptações/Recursos", dados.adaptacao]
+                    ],
+                    headStyles: { fillColor: [2, 132, 199] },
+                    styles: { cellPadding: 5, fontSize: 11 }
+                });
+
+                // 2. Converter PDF para Base64 (sem o prefixo data:application/pdf;base64,)
+                const pdfBase64 = doc.output('datauristring').split(',')[1];
+
+                // 3. Preparar parâmetros (Devem coincidir com os nomes no seu Template do EmailJS)
+                const templateParams = {
+                    student_name: dados.nome,
+                    student_class: dados.turma,
+                    diag_info: dados.diag,
+                    message_details: `Relatório completo de ${dados.nome} em anexo.`,
+                    content_pdf: pdfBase64, // Variável que o EmailJS usa para anexo
+                    to_email: 'raphaelferro1990@gmail.com'
                 };
 
-                // 1. Gerar o PDF em formato base64
-                const pdfBase64 = generatePDFBase64(formData);
-
-                // 2. Tentar enviar via EmailJS
-                // Nota: O EmailJS permite anexos em planos pagos ou via links.
-                // Aqui simularemos a lógica de envio conforme sua solicitação.
+                // 4. Enviar
+                await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, templateParams);
                 
-                // IMPORTANTE: Como não temos um servidor real de SMTP aqui,
-                // vamos simular o envio para o email especificado.
-                const response = await simulateEmailSend(formData, pdfBase64);
-
-                if(response.success) {
-                    showFeedback('✅', 'Sucesso!', 'O relatório foi enviado com sucesso para raphaelferro1990@gmail.com');
-                    form.reset();
-                } else {
-                    throw new Error(response.message);
-                }
+                mostrarAviso('✅', 'Enviado com Sucesso!', `O mapeamento de ${dados.nome} foi enviado para o e-mail de destino.`);
+                form.reset();
 
             } catch (error) {
-                showFeedback('❌', 'Erro no Envio', 'Motivo: ' + error.message);
+                console.error("Erro no envio:", error);
+                mostrarAviso('❌', 'Erro no Envio', 'Motivo: ' + (error.text || "Falha na comunicação com o servidor. Verifique suas credenciais."));
             } finally {
                 setLoading(false);
             }
         });
 
-        function generatePDFBase64(data) {
+        function baixarPDFManual() {
+            const nome = document.getElementById('aluno_nome').value || "aluno";
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-
-            // Estilo do PDF
-            doc.setFontSize(20);
-            doc.setTextColor(2, 132, 199);
-            doc.text("Relatório de Desenvolvimento Individual", 20, 20);
-            
-            doc.setFontSize(12);
-            doc.setTextColor(100);
-            doc.text(`Data do Registro: ${new Date().toLocaleDateString('pt-BR')}`, 20, 30);
-
-            const tableData = [
-                ["Campo", "Informação"],
-                ["Aluno", data.nome],
-                ["Nascimento", data.data],
-                ["Turma", data.turma],
-                ["Professor", data.professor],
-                ["Cognitivo", data.cognitivo || "Não informado"],
-                ["Social", data.social || "Não informado"],
-                ["Comunicação", data.comunicacao || "Não informado"],
-                ["Observações", data.obs || "Não informado"]
-            ];
-
+            doc.text("Mapeamento Inclusivo 2026", 20, 20);
             doc.autoTable({
-                startY: 40,
-                head: [tableData[0]],
-                body: tableData.slice(1),
-                theme: 'striped',
-                headStyles: { fillColor: [2, 132, 199] }
+                startY: 30,
+                body: [
+                    ["Aluno", document.getElementById('aluno_nome').value],
+                    ["Turma", document.getElementById('aluno_turma').value],
+                    ["Resumo", document.getElementById('perfil_cog').value]
+                ]
             });
-
-            return doc.output('datauristring');
+            doc.save(`Mapeamento2026_${nome}.pdf`);
         }
 
-        function downloadManualPDF() {
-            const formData = {
-                nome: document.getElementById('nome_aluno').value || "Aluno_Sem_Nome",
-                data: document.getElementById('data_nascimento').value,
-                turma: document.getElementById('turma').value,
-                professor: document.getElementById('professor').value,
-                cognitivo: document.getElementById('dev_cognitivo').value,
-                social: document.getElementById('interacao_social').value,
-                comunicacao: document.getElementById('comunicacao').value,
-                obs: document.getElementById('observacoes').value
-            };
-            
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            // Reutiliza lógica de design
-            doc.setFontSize(18);
-            doc.text("Relatório de Desenvolvimento", 20, 20);
-            
-            const content = Object.entries(formData).map(([key, val]) => [key.toUpperCase(), val]);
-            doc.autoTable({ body: content, startY: 30 });
-            
-            doc.save(`Relatorio_${formData.nome.replace(/\s+/g, '_')}.pdf`);
+        function setLoading(state) {
+            btnSubmit.disabled = state;
+            document.getElementById('btnLabel').textContent = state ? "Enviando Relatório..." : "Enviar para Raphael Ferro";
+            state ? document.getElementById('spinner').classList.remove('hidden') : document.getElementById('spinner').classList.add('hidden');
         }
 
-        // Simulação de envio (já que depende de API Keys externas)
-        async function simulateEmailSend(data, pdf) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    // Simulação: Se o nome for "Erro", ele falha para testar o retorno
-                    if (data.nome.toLowerCase() === "erro") {
-                        resolve({ success: false, message: "Falha na conexão com o servidor de e-mail (SMTP Timeout)." });
-                    } else {
-                        console.log("Enviando para: raphaelferro1990@gmail.com");
-                        console.log("Título: Relatório de Desenvolvimento - " + data.nome);
-                        resolve({ success: true });
-                    }
-                }, 2000);
-            });
+        function mostrarAviso(icon, title, text) {
+            document.getElementById('fbIcon').textContent = icon;
+            document.getElementById('fbTitle').textContent = title;
+            document.getElementById('fbText').textContent = text;
+            modal.classList.replace('hidden', 'flex');
         }
 
-        function setLoading(isLoading) {
-            if (isLoading) {
-                btnSubmit.disabled = true;
-                btnText.textContent = "Processando...";
-                loader.classList.remove('hidden');
-            } else {
-                btnSubmit.disabled = false;
-                btnText.textContent = "Enviar Relatório por E-mail";
-                loader.classList.add('hidden');
-            }
-        }
-
-        function showFeedback(icon, title, message) {
-            document.getElementById('modalIcon').textContent = icon;
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalMessage').textContent = message;
-            feedbackModal.classList.remove('hidden');
-            feedbackModal.classList.add('flex');
-        }
-
-        function closeModal() {
-            feedbackModal.classList.add('hidden');
-            feedbackModal.classList.remove('flex');
+        function fecharModal() {
+            modal.classList.replace('flex', 'hidden');
         }
     </script>
 </body>
